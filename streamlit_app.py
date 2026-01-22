@@ -8,22 +8,41 @@ from typing import Any, Dict, List, Optional
 
 import requests
 import streamlit as st
-
+#import pymupdf
+import fitz  # PyMuPDF
+from PIL import Image
+import io
 
 # ---------------------------
 # Config
 # ---------------------------
+
 DEFAULT_API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:8000")
-DEFAULT_API_KEY = os.getenv("API_KEY", "")
+DEFAULT_API_KEY = os.getenv("INVOICE_API_KEY", "changeme123")
 DEFAULT_UI_USERNAME = os.getenv("UI_USERNAME", "admin")
 DEFAULT_UI_PASSWORD = os.getenv("UI_PASSWORD", "")
 DEFAULT_POLL_INTERVAL = float(os.getenv("POLL_INTERVAL_SECONDS", "1.0"))
 DEFAULT_JOB_TIMEOUT = int(os.getenv("JOB_TIMEOUT_SECONDS", "600"))  # 10 minutes
 
 
+APP_VERSION = "ui-v3-pdf-image-render"
+
 # ---------------------------
 # Helpers
 # ---------------------------
+
+def render_pdf_page(pdf_bytes: bytes, page_number: int, zoom: float = 1.5):
+    doc = fitz.open(stream=pdf_bytes, filetype="pdf")
+    try:
+        page_number = max(0, min(page_number, doc.page_count - 1))
+        page = doc.load_page(page_number)
+        mat = fitz.Matrix(zoom, zoom)
+        pix = page.get_pixmap(matrix=mat, alpha=False)
+        img = Image.open(io.BytesIO(pix.tobytes("png"))).convert("RGB")
+        return img, doc.page_count
+    finally:
+        doc.close()
+
 def require_login() -> None:
     """Very basic password protection (session-based)."""
     if st.session_state.get("authenticated", False):
@@ -51,19 +70,9 @@ def require_login() -> None:
 
 
 def api_headers(api_key: str) -> Dict[str, str]:
+    print(f"api_key: {api_key}")
     return {"X-API-Key": api_key} if api_key else {}
 
-
-def b64_pdf_iframe(pdf_bytes: bytes, height_px: int = 900) -> str:
-    b64 = base64.b64encode(pdf_bytes).decode("utf-8")
-    return f"""
-    <iframe
-      src="data:application/pdf;base64,{b64}"
-      width="100%"
-      height="{height_px}px"
-      style="border: 1px solid #ddd; border-radius: 8px;"
-    ></iframe>
-    """
 
 
 def safe_json_pretty(obj: Any) -> str:
@@ -172,11 +181,11 @@ def sidebar_config():
     st.sidebar.header("⚙️ API Configuration")
     api_base_url = st.sidebar.text_input("API_BASE_URL", value=DEFAULT_API_BASE_URL)
     api_key = st.sidebar.text_input("API_KEY (X-API-Key)", value=DEFAULT_API_KEY, type="password")
-
+        
     st.sidebar.header("⏱ Polling")
     poll_interval = st.sidebar.number_input("Poll interval (seconds)", min_value=0.2, max_value=10.0, value=DEFAULT_POLL_INTERVAL, step=0.2)
     job_timeout = st.sidebar.number_input("Job timeout (seconds)", min_value=30, max_value=3600, value=DEFAULT_JOB_TIMEOUT, step=30)
-
+    st.sidebar.caption(f"API key length: {len(api_key or '')}")
     st.sidebar.divider()
     if st.sidebar.button("🧹 Clear session runs"):
         st.session_state["runs"] = []
@@ -406,8 +415,36 @@ def inspector_panel():
 
     with left:
         st.markdown("### 📄 Document Preview")
-        if f.content_type == "application/pdf" or f.filename.lower().endswith(".pdf"):
-            st.components.v1.html(b64_pdf_iframe(f.cached_bytes, height_px=900), height=920, scrolling=True)
+
+        is_pdf = (f.content_type == "application/pdf") or f.filename.lower().endswith(".pdf")
+
+        if is_pdf:
+            # page count cache
+            if "pdf_page_cache" not in st.session_state:
+                st.session_state["pdf_page_cache"] = {}
+
+            cache_key = f.file_key
+            if cache_key not in st.session_state["pdf_page_cache"]:
+                doc = fitz.open(stream=f.cached_bytes, filetype="pdf")
+                st.session_state["pdf_page_cache"][cache_key] = doc.page_count
+                doc.close()
+
+            page_count = st.session_state["pdf_page_cache"][cache_key]
+
+            page_idx = st.number_input(
+                "Page",
+                min_value=1,
+                max_value=page_count,
+                value=1,
+                step=1,
+                key=f"page_{f.file_key}",
+            ) - 1
+
+            img, _ = render_pdf_page(f.cached_bytes, page_number=int(page_idx), zoom=1.6)
+
+            # this is a plain image render; Chrome will not block it
+            st.image(img, use_container_width=True)
+
         else:
             st.image(f.cached_bytes, caption=f.filename, use_container_width=True)
 
@@ -445,6 +482,7 @@ def main():
     init_state()
 
     st.title("🧪 Invoice Extraction – Test Console")
+    
     st.caption("Uploads are cached in this Streamlit session. Refreshing the page will lose cached PDFs.")
 
     api_base_url, api_key, poll_interval, job_timeout = sidebar_config()
