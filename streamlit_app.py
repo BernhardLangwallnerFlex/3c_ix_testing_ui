@@ -8,7 +8,6 @@ from typing import Any, Dict, List, Optional
 
 import requests
 import streamlit as st
-#import pymupdf
 import fitz  # PyMuPDF
 from PIL import Image
 import io
@@ -178,6 +177,10 @@ def api_job_status(api_base_url: str, api_key: str, job_id: str) -> dict:
 # UI
 # ---------------------------
 def sidebar_config():
+    # add (centered) logo to sidebar
+    _c1, _c2, _c3 = st.sidebar.columns([1, 2, 1])
+    with _c2:
+        st.image("logo_blau.jpg", width=120)
     st.sidebar.header("⚙️ API Configuration")
     api_base_url = st.sidebar.text_input("API_BASE_URL", value=DEFAULT_API_BASE_URL)
     api_key = st.sidebar.text_input("API_KEY (X-API-Key)", value=DEFAULT_API_KEY, type="password")
@@ -473,7 +476,16 @@ def inspector_panel():
 
 
 def main():
-    st.set_page_config(page_title="Invoice Extraction UI", layout="wide")
+    # Favicon / browser tab icon
+    # - Streamlit uses `page_icon` as the favicon (emoji or image).
+    # - Keep this as the first Streamlit call in `main()`.
+    page_icon = "🧾"
+    try:
+        page_icon = Image.open("logo_blau.jpg")
+    except Exception:
+        pass
+
+    st.set_page_config(page_title="Invoice Extraction UI", page_icon=page_icon, layout="wide")
 
     require_login()
     if not st.session_state.get("authenticated", False):
@@ -481,7 +493,7 @@ def main():
 
     init_state()
 
-    st.title("🧪 Invoice Extraction – Test Console")
+    st.title("Invoice Extraction – Test Console")
     
     st.caption("Uploads are cached in this Streamlit session. Refreshing the page will lose cached PDFs.")
 
