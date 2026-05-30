@@ -14,6 +14,8 @@ import fitz  # PyMuPDF
 from PIL import Image
 import io
 
+import sanity
+
 # ---------------------------
 # Config
 # ---------------------------
@@ -431,6 +433,85 @@ def build_status_table(run_id: str):
     return rows
 
 
+# ---------------------------
+# Sanity-check rendering (presentation only — all logic lives in sanity.py)
+# ---------------------------
+_VERDICT_ICON = {"pass": "✅", "warn": "⚠️", "fail": "❌", "skipped": "➖"}
+_CURRENCY_SYMBOL = {"EUR": "€", "USD": "$", "GBP": "£", "CHF": "CHF "}
+
+
+def _money(amount, currency) -> str:
+    if amount is None:
+        return "—"
+    sym = _CURRENCY_SYMBOL.get(currency or "", f"{currency} " if currency else "")
+    return f"{sym}{amount:,.2f}"
+
+
+def _rollup_summary(report) -> str:
+    docs = report.subdoc_count
+    plural = "doc" if docs == 1 else "docs"
+    if docs == 0:
+        return "No documents to check"
+    if report.verdict == "pass":
+        return f"All checks passed · {docs} {plural}"
+    if report.verdict == "skipped":
+        return f"Not enough numbers to check · {docs} {plural}"
+    fails = sum(1 for sd in report.subdocs if sd.verdict == "fail")
+    warns = sum(1 for sd in report.subdocs if sd.verdict == "warn")
+    parts = []
+    if fails:
+        parts.append(f"{fails} failed")
+    if warns:
+        parts.append(f"{warns} with warnings")
+    return f"{', '.join(parts)} across {docs} {plural}"
+
+
+def render_sanity_report(report, result: dict) -> None:
+    """Render a SanityReport. Pure presentation: reads the report, no arithmetic."""
+    icon = _VERDICT_ICON.get(report.verdict, "")
+    headline = f"{icon} {_rollup_summary(report)}"
+
+    # Always-visible rollup badge, colored by severity.
+    box = {"pass": st.success, "warn": st.warning, "fail": st.error}.get(report.verdict, st.info)
+    box(headline)
+
+    if report.subdoc_count == 0:
+        return
+
+    raw_subdocs = (result or {}).get("subdocuments") or []
+    multi = report.subdoc_count > 1
+    for sd in report.subdocs:
+        label = f"{_VERDICT_ICON.get(sd.verdict, '')} Doc {sd.index + 1}"
+        if sd.number:
+            label += f" · {sd.number}"
+        # Expand docs that need attention; collapse clean ones when there are several.
+        expanded = (sd.verdict in ("fail", "warn")) or not multi
+        with st.expander(label, expanded=expanded):
+            for c in sd.checks:
+                bits = []
+                if c.note:
+                    bits.append(c.note)
+                if c.verdict != "skipped" and c.delta is not None:
+                    bits.append(f"Δ {_money(c.delta, sd.currency)}")
+                suffix = "  —  " + " · ".join(bits) if bits else ""
+                st.markdown(f"{_VERDICT_ICON.get(c.verdict, '')} **{c.label}**{suffix}")
+                # computed vs reported, shown for anything not clean-passing
+                if c.verdict in ("warn", "fail") and c.computed is not None:
+                    st.caption(
+                        f"computed {_money(c.computed, sd.currency)} · "
+                        f"reported {_money(c.reported, sd.currency)}"
+                    )
+
+            # Model-emitted warnings: shown near the checks but visually distinct.
+            raw = raw_subdocs[sd.index] if sd.index < len(raw_subdocs) else {}
+            model_warnings = (raw or {}).get("warnings") or []
+            if model_warnings:
+                st.divider()
+                st.caption("📝 Model notes (not sanity checks):")
+                for w in model_warnings:
+                    st.caption(f"• {w}")
+
+
 def inspector_panel(product: str):
     st.subheader("🔎 Inspector")
 
@@ -514,8 +595,15 @@ def inspector_panel(product: str):
         st.caption(f"Cached locally in session • {round(f.size_bytes/1024,1)} KB")
 
     with right:
-        st.markdown("### 🧾 Extraction Result (JSON)")
         if f.status == "finished" and f.result is not None:
+            st.markdown("### 🩺 Sanity Checks")
+            try:
+                report = sanity.evaluate(f.result)
+                render_sanity_report(report, f.result)
+            except Exception as e:
+                st.warning(f"Could not compute sanity checks: {e}")
+
+            st.markdown("### 🧾 Extraction Result (JSON)")
             # collapsible tree
             st.json(f.result)
 

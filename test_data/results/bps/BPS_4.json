@@ -1,0 +1,104 @@
+{
+  "number_of_subdocuments": 1,
+  "subdocuments": [
+    {
+      "type": "quote",
+      "currency": "EUR",
+      "number": "7611",
+      "issuedAt": "2026-04-21",
+      "sender": {
+        "companyName": "DRYING CONSTRUCTION GmbH",
+        "address": "Dünenstraße 68a",
+        "postcode": "18609",
+        "city": "Ostseebad Binz",
+        "country": null,
+        "contactPhone": "+49 (0) 38393 - 3 19 02",
+        "contactMail": "goldammer-binz@web.de",
+        "vatId": "DE313537625"
+      },
+      "serviceProvider": {
+        "companyName": "DRYING CONSTRUCTION GmbH",
+        "address": "Dünenstraße 68a",
+        "postcode": "18609",
+        "city": "Ostseebad Binz",
+        "country": null,
+        "contactPhone": "+49 (0) 38393 - 3 19 02",
+        "contactMail": "goldammer-binz@web.de",
+        "vatId": "DE313537625"
+      },
+      "payment": {
+        "iban": "DE94150505000102074976",
+        "bic": "NOLADE21GRW",
+        "bankName": null,
+        "dueDate": null
+      },
+      "recipient": {
+        "companyName": "Dostan GmbH Vermögens- & Verwaltungsgesellschaft",
+        "contactFirstname": null,
+        "contactName": null,
+        "street": "Hauptstraße 27",
+        "postcode": "18528",
+        "city": "Parchtitz",
+        "country": null,
+        "contactPhone": null,
+        "contactMail": null
+      },
+      "policyholder": {
+        "name": "Martin Thees",
+        "address": "Bahnhofstraße 22",
+        "postcode": "18528",
+        "city": "Bergen auf Rügen",
+        "country": null
+      },
+      "damageLocation": {
+        "address": "Bahnhofstraße 22",
+        "postcode": "18528",
+        "city": "Bergen auf Rügen",
+        "country": null
+      },
+      "items": [
+        {
+          "position": "1",
+          "name": "Bereich: Whg. 8 Wiederherstellungsarbeiten: Schließen der Wandöffnung (ca. 80 x 75 cm) mittels GKBi, Liefern, Einsetzen und Verfugen von 8 Fliesen, Erneuern der Silikonfuge Hinweis: Fliesenfarbe kann vom Bestand abweichen",
+          "qty": 1.0,
+          "unit": "Stück",
+          "unitCode": 0,
+          "unitPriceNet": 895.0,
+          "lineTotalNet": 895.0,
+          "taxRate": null,
+          "discount": null,
+          "source": {
+            "snippet": "1 | 1,00 | Stück | Bereich: Whg. 8 Wiederherstellungsarbeiten: Schließen der Wandöffnung (ca. 80 x 75 cm) mittels GKBi, Liefern, Einsetzen und Verfugen von 8 Fliesen, Erneuern der Silikonfuge Hinweis: Fliesenfarbe kann vom Bestand abweichen | 895,00 | 895,00"
+          }
+        },
+        {
+          "position": "2",
+          "name": "Fahrtkostenpauschale Pauschalen für Fahrtkosten enthalten die Anfahrt mit einem Systemfahrzeug, einschließlich aller wichtigen Werkzeuge und Geräte zur Erstversorgung von Gebäudeschäden. Der Preis gilt für die Hin- und Rückfahrt.",
+          "qty": 3.0,
+          "unit": "Stück",
+          "unitCode": 0,
+          "unitPriceNet": 80.0,
+          "lineTotalNet": 240.0,
+          "taxRate": null,
+          "discount": null,
+          "source": {
+            "snippet": "2 | 3,00 | Stück | Fahrtkostenpauschale Pauschalen für Fahrtkosten enthalten die Anfahrt mit einem Systemfahrzeug, einschließlich aller wichtigen Werkzeuge und Geräte zur Erstversorgung von Gebäudeschäden. Der Preis gilt für die Hin- und Rückfahrt. | 80,00 | 240,00"
+          }
+        }
+      ],
+      "totals": {
+        "net": 1135.0,
+        "tax": {
+          "rate": 19.0,
+          "amount": 215.65
+        },
+        "gross": 1350.65,
+        "discount": null
+      },
+      "warnings": [
+        "Versicherungsnehmer nicht explizit als solcher bezeichnet; 'Mieter Martin Thees' wurde als wahrscheinlichster policyholder aus dem Schadenbezug übernommen.",
+        "Schadenort weicht von der Rechnungsanschrift des Empfängers ab und wurde aus dem Betreff übernommen."
+      ]
+    }
+  ]
+}

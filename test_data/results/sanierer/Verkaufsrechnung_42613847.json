@@ -1,0 +1,207 @@
+{
+  "number_of_subdocuments": 1,
+  "subdocuments": [
+    {
+      "type": "invoice",
+      "currency": "EUR",
+      "number": "42613847",
+      "issuedAt": "2026-05-06",
+      "items": [
+        {
+          "position": null,
+          "lvPosition": "01.05.04.013",
+          "name": "Stromverbrauch: 28.11.2025 -18.12.2025",
+          "qty": 480,
+          "unit": "Kilowatt",
+          "unitCode": 20,
+          "unitPriceNet": 0.0,
+          "lineTotalNet": 0.0,
+          "taxRate": null,
+          "discount": null,
+          "source": {
+            "snippet": "01.05.04.013 Stromverbrauch: 28.11.2025 -18.12.2025 | 480 Kilowatt | 0,00 | 0,00"
+          }
+        },
+        {
+          "position": "1.1.1",
+          "lvPosition": "01.01.01.002",
+          "name": "Laufwege mit Malerabdeckvlies während der Arbeiten vollflächig abdecken, gegen Verrutschen sichern sowie nach Abschluss entfernen, Abbruchmaterial in Container verbringen, Entsorgungskosten werden gesondert abgerechnet",
+          "qty": 25,
+          "unit": "qm",
+          "unitCode": 8,
+          "unitPriceNet": 2.78,
+          "lineTotalNet": 69.5,
+          "taxRate": null,
+          "discount": null,
+          "source": {
+            "snippet": "1.1.1 | 01.01.01.002 Laufwege mit Malerabdeckvlies ... | 25 qm | 2,78 | 69,50"
+          }
+        },
+        {
+          "position": "1.1.2",
+          "lvPosition": "01.01.03.001",
+          "name": "Möbel/ Einrichtungsgegenstände aus den vom Schaden betroffenen Räumen zur Schaffung der Baufreiheit verbringen, zwischenlagern, nach Abschluß der Arbeiten wieder an ihren Platz zu stellen. Hinweis: Möbel rücken zur EDT im Aufenthaltsraum.",
+          "qty": 1.5,
+          "unit": "Std",
+          "unitCode": 13,
+          "unitPriceNet": 44.0,
+          "lineTotalNet": 66.0,
+          "taxRate": null,
+          "discount": null,
+          "source": {
+            "snippet": "1.1.2 | 01.01.03.001 Möbel/ Einrichtungsgegenstände ... Hinweis: Möbel rücken zur EDT im Aufenthaltsraum. | 1,5 Std | 44,00 | 66,00"
+          }
+        },
+        {
+          "position": "1.1.3",
+          "lvPosition": "01.05.03.001",
+          "name": "einzelne Boden- oder Wandfliesen zerstörungsfrei ausbauen, Fliesen und Estrich von Kleber- und Mörtelrückständen reinigen, zwischenlagern, wieder einbauen und verfugen Hinweis: zur EDT",
+          "qty": 4,
+          "unit": "Stück",
+          "unitCode": 0,
+          "unitPriceNet": 58.28,
+          "lineTotalNet": 233.12,
+          "taxRate": null,
+          "discount": null,
+          "source": {
+            "snippet": "1.1.3 | 01.05.03.001 einzelne Boden- oder Wandfliesen zerstörungsfrei ... | 4 Stück | 58,28 | 233,12"
+          }
+        },
+        {
+          "position": "1.1.4",
+          "lvPosition": "01.05.03.002",
+          "name": "Sockelfliesen zerstörungsfrei ausbauen, Fliesen von Kleber- und Mörtelrückständen reinigen, zwischenlagern, wieder einbauen und verfugen",
+          "qty": 2,
+          "unit": "Meter",
+          "unitCode": 7,
+          "unitPriceNet": 23.63,
+          "lineTotalNet": 47.26,
+          "taxRate": null,
+          "discount": null,
+          "source": {
+            "snippet": "1.1.4 | 01.05.03.002 Sockelfliesen zerstörungsfrei ... | 2 Meter | 23,63 | 47,26"
+          }
+        },
+        {
+          "position": "1.1.5",
+          "lvPosition": "01.05.04.003",
+          "name": "Trocknung bis 30QM Grundfläche für Raum-, Wand-, Holzbalkendecken- und Estrichdämmschichttrocknung, in mehreren Räumen pro Etage und Wohneinheit für max. 21 Tage Hinweis: Aufenthaltsraum 21,90m²",
+          "qty": 1,
+          "unit": "Stück",
+          "unitCode": 0,
+          "unitPriceNet": 510.0,
+          "lineTotalNet": 510.0,
+          "taxRate": null,
+          "discount": null,
+          "source": {
+            "snippet": "1.1.5 | 01.05.04.003 Trocknung bis 30QM Grundfläche ... Hinweis: Aufenthaltsraum 21,90m² | 1 Stück | 510,00 | 510,00"
+          }
+        },
+        {
+          "position": "1.1.6",
+          "lvPosition": "01.05.04.010",
+          "name": "Standzeitverlängerung für Trocknung bis 30QM Grundfläche ab dem 22. Tag pro Tag",
+          "qty": 0,
+          "unit": "Stück",
+          "unitCode": 0,
+          "unitPriceNet": 26.0,
+          "lineTotalNet": 0.0,
+          "taxRate": null,
+          "discount": null,
+          "source": {
+            "snippet": "1.1.6 | 01.05.04.010 Standzeitverlängerung für Trocknung bis 30QM Grundfläche ab dem 22. Tag pro Tag | 0 Stück | 26,00 | 0,00"
+          }
+        },
+        {
+          "position": "1.1.7",
+          "lvPosition": "01.05.05.007",
+          "name": "Trocknungsaufbau mit einem Wasserabscheider bei freiem/stehendem Wasser in der Estrichdämmschicht, inkl. der erforderlichen Geräte, deren Vorhaltung und des Umbaus auf normale Trocknung nach Entfernung des freien Wassers aus der Konstruktion",
+          "qty": 1,
+          "unit": "Stück",
+          "unitCode": 0,
+          "unitPriceNet": 210.0,
+          "lineTotalNet": 210.0,
+          "taxRate": null,
+          "discount": null,
+          "source": {
+            "snippet": "1.1.7 | 01.05.05.007 Trocknungsaufbau mit einem Wasserabscheider ... | 1 Stück | 210,00 | 210,00"
+          }
+        },
+        {
+          "position": "1.1.8",
+          "lvPosition": "01.05.05.006",
+          "name": "Zulage für Fungizidbehandlung zur Vermeidung von Schimmel- und Sporenbildung bei Trocknungsarbeiten",
+          "qty": 21.9,
+          "unit": "qm",
+          "unitCode": 8,
+          "unitPriceNet": 2.52,
+          "lineTotalNet": 55.19,
+          "taxRate": null,
+          "discount": null,
+          "source": {
+            "snippet": "1.1.8 | 01.05.05.006 Zulage für Fungizidbehandlung ... | 21,9 qm | 2,52 | 55,19"
+          }
+        },
+        {
+          "position": "1.1.9",
+          "lvPosition": "01.02.01.001",
+          "name": "Entsorgung Baustellenabfälle pauschal für Kleinmengen welche in einem Sammelcontainer oder direkt in Kleinmengen beim Entsorger entsorgt werden, ohne gesonderten Nachweis.",
+          "qty": 1,
+          "unit": "Stück",
+          "unitCode": 0,
+          "unitPriceNet": 55.0,
+          "lineTotalNet": 55.0,
+          "taxRate": null,
+          "discount": null,
+          "source": {
+            "snippet": "1.1.9 | 01.02.01.001 Entsorgung Baustellenabfälle pauschal ... | 1 Stück | 55,00 | 55,00"
+          }
+        },
+        {
+          "position": "1.2.1",
+          "lvPosition": "01.00.03.001",
+          "name": "Aufwandspauschale Einrichtung Baustelle. Aufwandspauschale für die Bereitstellung von Geräten, Werkzeugen und weiteren Betriebsstoffen sowie notwendige persönlicher Schutzausrüstung (bis GB1 in Brandschäden gemäß Richtlinien zur Brandschadensanierung VdS 2357. Bei Schimmelschäden bis Schimmelbefall gemäß Kategorie 3 und Nutzungsklasse II bis IV gemäß Leitfaden zur Vorbeugung, Erfassung und Sanierung von Schimmelbefall des Umweltbundesamtes) um die vereinbarte Bauleistung erfüllen zu können, incl. Verbringen auf die Baustelle und Abtransport nach Fertigstellung der Leistung in % der Netto-Rechnungssumme",
+          "qty": 0.01,
+          "unit": "%",
+          "unitCode": 16,
+          "unitPriceNet": 1246.07,
+          "lineTotalNet": 12.46,
+          "taxRate": null,
+          "discount": null,
+          "source": {
+            "snippet": "1.2.1 | 01.00.03.001 Aufwandspauschale Einrichtung Baustelle ... | 0,01 Pauschal | 1.246,07 | 12,46"
+          }
+        },
+        {
+          "position": "1.3.1",
+          "lvPosition": "01.20.01.001",
+          "name": "AXA-Rabatt gemäß Rahmenvertrag",
+          "qty": -0.025,
+          "unit": "%",
+          "unitCode": 16,
+          "unitPriceNet": 1258.53,
+          "lineTotalNet": -31.46,
+          "taxRate": null,
+          "discount": null,
+          "source": {
+            "snippet": "1.3.1 | 01.20.01.001 AXA-Rabatt gemäß Rahmenvertrag | -0,025 Pauschal | 1.258,53 | -31,46"
+          }
+        }
+      ],
+      "totals": {
+        "net": 1227.07,
+        "tax": {
+          "rate": 19.0,
+          "amount": 233.14
+        },
+        "gross": 1460.21,
+        "discount": -31.46
+      },
+      "warnings": [
+        "Die Zeile 'Stromverbrauch: 28.11.2025 -18.12.2025' hat keine laufende Positionsnummer in der Pos.-Spalte; daher position=null.",
+        "Bei den Positionen 1.2.1 und 1.3.1 ist im Beleg als Mengeneinheit 'Pauschal' angegeben; gemäß Extraktionsregel für Prozent-/Pauschal-/Rabattpositionen wurde unit='%' und unitCode=16 gesetzt.",
+        "Die Beschreibung von Position 1.1.3 ist über Seitenumbruch/Übertrag getrennt und wurde aus beiden OCR-Quellen zusammengesetzt."
+      ]
+    }
+  ]
+}

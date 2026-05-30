@@ -1,0 +1,73 @@
+{
+  "number_of_subdocuments": 1,
+  "subdocuments": [
+    {
+      "type": "invoice",
+      "currency": "EUR",
+      "number": "AR26076770",
+      "issuedAt": "2026-05-06",
+      "items": [
+        {
+          "position": "2 1",
+          "lvPosition": "05.01.001",
+          "name": "Leckageortung innen Position 05.01.001 Leckageortung innen, möglichst mit Freilegen der Leckstelle einschl. An- und Abfahrt, Ortungsbericht mit Bilddokumentation und erforderlicher Geräte und Einsatzmaterialien, Arbeitszeit zu Lecksuche vor Ort auf 3 Stunden begrenzt, darüberhin aus gehende Zeiten im Stundenaufwand für Leckortungstechniker",
+          "qty": 1,
+          "unit": "St",
+          "unitCode": 0,
+          "unitPriceNet": 371.0,
+          "lineTotalNet": 371.0,
+          "taxRate": null,
+          "discount": null,
+          "source": {
+            "snippet": "2 1 Leckageortung innen ... 1,00 St 371,00 371,00 / Position 05.01.001 Leckageortung innen"
+          }
+        },
+        {
+          "position": "2 1 1",
+          "lvPosition": "00.03.001",
+          "name": "Aufwandspauschale Einrichtung Baustelle Position 00.03.001 Aufwandspauschale für die Bereitstellung von Geräten, Werkzeugen und weiteren Betriebsstoffen sowie notwendige persönlicher Schutzausrüstung (bis GB1 in Brandschäden gemäß Richtlinien zur Brandschadensanierung VdS 2357. Bei Schimmelschäden bis Schimmelbefall gemäß Kategorie 3 und Nutzungsklasse II bis IV gemäß Leitfaden zur Vorbeugung, Erfassung und Übertrag Sanierung von Schimmelbefall des Umweltbundesamtes) um die vereinbarte Bauleistung erfüllen zu können, incl. Verbringen auf die Baustelle und Abtransport nach Fertigstellung der Leistung in % der Netto-Rechnungssumme 1%. Diese Position darf einmalig auf alle abgerechneten Positionen verwendet werden.",
+          "qty": 1.0,
+          "unit": "%",
+          "unitCode": 16,
+          "unitPriceNet": 371.0,
+          "lineTotalNet": 3.71,
+          "taxRate": null,
+          "discount": null,
+          "source": {
+            "snippet": "2 1 1 Aufwandspauschale Einrichtung Baustelle ... 1,00 % (Z-L) 371,00 3,71 / Position 00.03.001"
+          }
+        },
+        {
+          "position": "2 2 1",
+          "lvPosition": "20.01.001",
+          "name": "AXA-Rabatt gemäß Rahmenvertrag Position 20.01.001 AXA-Rabatt gemäß Rahmenvertrag",
+          "qty": -2.5,
+          "unit": "%",
+          "unitCode": 16,
+          "unitPriceNet": 374.71,
+          "lineTotalNet": -9.37,
+          "taxRate": null,
+          "discount": null,
+          "source": {
+            "snippet": "2 2 1 AXA-Rabatt gemäß Rahmenvertrag -2,50 % (Z-L) 374,71 -9,37 / Position 20.01.001"
+          }
+        }
+      ],
+      "totals": {
+        "net": 365.34,
+        "tax": {
+          "rate": 19.0,
+          "amount": 69.41
+        },
+        "gross": 434.75,
+        "discount": null
+      },
+      "warnings": [
+        "Die laufenden Positionsnummern sind hierarchisch als '2 1', '2 1 1' und '2 2 1' dargestellt, nicht im klassischen Format mit Punkten.",
+        "Bei der Prozentposition '1,00 % (Z-L)' wurde qty gemäß Beleg als 1.00 übernommen; die Rechenlogik ergibt 1% von 371,00 = 3,71.",
+        "Bei der Rabattposition '-2,50 % (Z-L)' wurde qty gemäß Beleg als -2.50 übernommen; lineTotalNet ist negativ ausgewiesen.",
+        "Der Beschreibungstext der Aufwandspauschale läuft über den Seitenumbruch; Name wurde aus beiden OCR-Quellen zusammengesetzt."
+      ]
+    }
+  ]
+}

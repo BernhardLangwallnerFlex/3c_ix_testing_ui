@@ -1,0 +1,86 @@
+{
+  "number_of_subdocuments": 1,
+  "subdocuments": [
+    {
+      "type": "invoice",
+      "currency": "EUR",
+      "number": "2520-220003018",
+      "issuedAt": "2026-05-06",
+      "items": [
+        {
+          "position": "01.01.",
+          "lvPosition": "05.01.999",
+          "name": "Leckageortung innen, möglichst mit Freilegen der Leckstelle einschl. An- und Abfahrt, Ortungsbericht mit Bilddokumentation und erforderlicher Geräte und Einsatzmaterialien, Arbeitszeit zu Lecksuche vor Ort auf 3 Stunden begrenzt, darüberhinaus gehende Zeiten im Stundenaufwand für Leckortungstechniker",
+          "qty": 1,
+          "unit": "ST",
+          "unitCode": 0,
+          "unitPriceNet": 371.0,
+          "lineTotalNet": 371.0,
+          "taxRate": null,
+          "discount": null,
+          "source": {
+            "snippet": "01.01. Leckageortung innen | 1 | ST | 371,00 € | 371,00 € / 05.01.999 Leckageortung innen, möglichst mit Freilegen der Leckstelle ..."
+          }
+        },
+        {
+          "position": "02.01.",
+          "lvPosition": "02.01.001",
+          "name": "Entsorgung Baustellenabfälle pauschal für Kleinmengen, welche in einem Sammelcontainer oder direkt in Kleinmengen beim Entsorger entsorgt werden, ohne gesonderten Nachweis",
+          "qty": 1,
+          "unit": "ST",
+          "unitCode": 0,
+          "unitPriceNet": 55.0,
+          "lineTotalNet": 55.0,
+          "taxRate": null,
+          "discount": null,
+          "source": {
+            "snippet": "02.01. Entsorgung Baustellenabfälle, Kleinmengen | 1 | ST | 55,00 € | 55,00 € / 02.01.001 Entsorgung Baustellenabfälle pauschal für Kleinmengen ..."
+          }
+        },
+        {
+          "position": "03.01.",
+          "lvPosition": "00.03.001",
+          "name": "1% Aufwandspauschale für die Bereitstellung von Geräten, Werkzeugen und weiteren Betriebsstoffen sowie notwendige persönlicher Schutzausrüstung (bis GB1 in Brandschäden gemäß Richtlinien zur Brandschadensanierung VdS 2357. Bei Schimmelschäden bis Schimmelbefall gemäß Kategorie 3 und Nutzungsklasse II bis IV gemäß Leitfaden zur Vorbeugung, Erfassung und Sanierung von Schimmelbefall des Umweltbundesamtes) um die vereinbarte Bauleistung erfüllen zu können, incl. Verbringen auf die Baustelle und Abtransport nach Fertigstellung der Leistung in % der Netto-Rechnungssumme",
+          "qty": 1,
+          "unit": "%",
+          "unitCode": 16,
+          "unitPriceNet": 4.05,
+          "lineTotalNet": 4.05,
+          "taxRate": null,
+          "discount": null,
+          "source": {
+            "snippet": "03.01. Aufwandspauschale Einrichtung Baustelle | 1 | % | 4,05 € | 4,05 € / 00.03.001 1% Aufwandspauschale für die Bereitstellung ..."
+          }
+        },
+        {
+          "position": "04.01.",
+          "lvPosition": "20.01.001",
+          "name": "AXA-Rabatt gemäß Rahmenvertrag",
+          "qty": null,
+          "unit": "%",
+          "unitCode": 16,
+          "unitPriceNet": -2.5,
+          "lineTotalNet": -10.75,
+          "taxRate": null,
+          "discount": null,
+          "source": {
+            "snippet": "04.01. AXA-Rabatt gemäß Rahmenvertrag | -2,50 % | -10,75 € / 20.01.001 AXA-Rabatt gemäß Rahmenvertrag"
+          }
+        }
+      ],
+      "totals": {
+        "net": 419.3,
+        "tax": {
+          "rate": 19,
+          "amount": 79.67
+        },
+        "gross": 498.97,
+        "discount": null
+      },
+      "warnings": [
+        "Bei Position 03.01 ist die Einheit '%' angegeben, die Menge wurde als 1 übernommen; der Beschreibungstext nennt 1% Aufwandspauschale, der Einzelpreis ist jedoch als 4,05 € ausgewiesen.",
+        "Bei Position 04.01 (Rabatt) ist keine Menge angegeben; qty daher null. Der Prozentwert -2,50 % wurde als unitPriceNet übernommen, da kein Geld-Einzelpreis ausgewiesen ist."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "number_of_subdocuments": 1,
+  "subdocuments": [
+    {
+      "type": "quote",
+      "currency": "EUR",
+      "number": "A-0010-26",
+      "issuedAt": "2026-04-02",
+      "sender": {
+        "companyName": "Uwe + Bernd STADLER GmbH",
+        "address": "Herrenalber Straße 6",
+        "postcode": "76307",
+        "city": "Karlsbad-Spielberg",
+        "country": null,
+        "contactPhone": "07202/8458",
+        "contactMail": "schreinerei.stadler@t-online.de",
+        "vatId": "DE188926510"
+      },
+      "serviceProvider": {
+        "companyName": "Uwe + Bernd STADLER GmbH",
+        "address": "Herrenalber Straße 6",
+        "postcode": "76307",
+        "city": "Karlsbad-Spielberg",
+        "country": null,
+        "contactPhone": "07202/8458",
+        "contactMail": "schreinerei.stadler@t-online.de",
+        "vatId": "DE188926510"
+      },
+      "payment": {
+        "iban": "DE44660501010001604339",
+        "bic": "KARSDE66XXX",
+        "bankName": "Sparkasse Karlsruhe Ettlingen",
+        "dueDate": null
+      },
+      "recipient": {
+        "companyName": null,
+        "contactFirstname": "Volker",
+        "contactName": "Steinbach",
+        "street": "Scherlachweg 4",
+        "postcode": "70771",
+        "city": "Leinfelden-Echterdingen",
+        "country": null,
+        "contactPhone": null,
+        "contactMail": null
+      },
+      "policyholder": {
+        "name": "Irene Seeger",
+        "address": "Rheinstraße 79a",
+        "postcode": "76275",
+        "city": "Ettlingen",
+        "country": null
+      },
+      "damageLocation": {
+        "address": "Rheinstraße 79a",
+        "postcode": "76275",
+        "city": "Ettlingen",
+        "country": null
+      },
+      "items": [
+        {
+          "position": null,
+          "name": "BAWO Wohnungsabschluss Türblatt Edelholz Furniertür FT/01 WE 198,5 x 98,5 cm links glatt längsfurniert, Überschlag Rundkante, Stärke 45mm Mittellage Verbundplatte Stabilisator, Spion SSK1 Klimakl3 (ungepr.) Falzdichtung 3-fach Verriegelung mit PZ-Schloss nickel-silber 2 Bänder V0026WF vernickelt Schall-Ex montiert Oberfläche eur. Erle lackiert",
+          "qty": 1.0,
+          "unit": null,
+          "unitCode": 0,
+          "unitPriceNet": 1985.0,
+          "lineTotalNet": 1985.0,
+          "taxRate": null,
+          "discount": null,
+          "source": {
+            "snippet": "BAWO Wohnungsabschluss Türblatt Edelholz Furniertür FT/01 WE 198,5 x 98,5 cm links ... Oberfläche eur. Erle lackiert 1,00 1.985,00 1.985,00"
+          }
+        },
+        {
+          "position": null,
+          "name": "BAWO Edelholz Softzarge FS 198,5 x 98,5 x 27,0 cm links Futter 22mm aus Spanplatte rund 17mm starke Bekleidung 60mm gerundet SB f. 3-fach Verriegelung inkl. Sicherheits-Schließblech 2xBA V4600WF inkl. Bänder Wst variabel -5/+10mm Oberfläche eur. Erle lackiert",
+          "qty": 1.0,
+          "unit": null,
+          "unitCode": 0,
+          "unitPriceNet": 1576.0,
+          "lineTotalNet": 1576.0,
+          "taxRate": null,
+          "discount": null,
+          "source": {
+            "snippet": "BAWO Edelholz Softzarge FS 198,5 x 98,5 x 27,0 cm links ... Oberfläche eur. Erle lackiert 1,00 1.576,00 1.576,00"
+          }
+        },
+        {
+          "position": null,
+          "name": "Beschädigtes Türelement ausbauen und entsorgen Neues Element einbauen, Beschläge anbringen",
+          "qty": 1.0,
+          "unit": null,
+          "unitCode": 0,
+          "unitPriceNet": 685.0,
+          "lineTotalNet": 685.0,
+          "taxRate": null,
+          "discount": null,
+          "source": {
+            "snippet": "Beschädigtes Türelement ausbauen und entsorgen Neues Element einbauen, Beschläge anbringen 1,00 685,00 685,00"
+          }
+        }
+      ],
+      "totals": {
+        "net": 4246.0,
+        "tax": {
+          "rate": 19.0,
+          "amount": 806.74
+        },
+        "gross": 5052.74,
+        "discount": null
+      },
+      "warnings": [
+        "Rechtsform/Firmenname in OCR Source B als 'GdbR' erkannt, Bild und OCR Source A zeigen jedoch 'GmbH'; daher 'Uwe + Bernd STADLER GmbH' verwendet.",
+        "Straßenname des Senders in OCR Source A als 'Herrensilber Straße' erkannt, Bild und OCR Source B zeigen 'Herrenalber Straße'; daher 'Herrenalber Straße 6' verwendet.",
+        "Schadenort weicht von der Rechnungsanschrift des Empfängers ab; aus Betreff als Rheinstraße 79a, 76275 Ettlingen übernommen.",
+        "Einheiten sind in den Positionen nicht explizit angegeben; unit=null und unitCode=0 gemäß Vorgabe gesetzt."
+      ]
+    }
+  ]
+}
