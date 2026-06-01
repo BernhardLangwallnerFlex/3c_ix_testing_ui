@@ -1,0 +1,853 @@
+{
+  "number_of_subdocuments": 4,
+  "subdocuments": [
+    {
+      "type": "invoice",
+      "currency": "EUR",
+      "number": "11330",
+      "issuedAt": "2025-07-09",
+      "serviceDates": [
+        "2025-07-09"
+      ],
+      "sender": {
+        "practiceName": "Tierarztpraxis im Schwabachgrund",
+        "address": "Lange Zeile 87",
+        "postcode": "91054",
+        "city": "Erlangen",
+        "country": null,
+        "contactPhone": "09131 9201604",
+        "contactMail": "info@erlangen-tierarzt.de",
+        "vatId": "DE335563273"
+      },
+      "clinicians": [
+        {
+          "name": "Melanie Schwendinger",
+          "title": "Mag.med.vet."
+        }
+      ],
+      "payment": {
+        "iban": "DE96763500000060114699",
+        "bic": "BYLADEM1ERH",
+        "bankName": "Sparkasse Erlangen Höchstadt Herzogenaurach",
+        "dueDate": null
+      },
+      "recipient": {
+        "companyName": null,
+        "contactFirstname": "Karin",
+        "contactName": "Distler",
+        "street": "Zum Ried 4",
+        "postcode": "90765",
+        "city": "Fürth",
+        "country": null,
+        "contactPhone": null,
+        "contactMail": null
+      },
+      "animals": [
+        {
+          "name": "Luci",
+          "species": "Hund",
+          "breed": "Zwergpudel"
+        }
+      ],
+      "diagnoses": [
+        "Voruntersuchung Zahn-OP"
+      ],
+      "items": [
+        {
+          "name": "Eingehende Untersuchung einzelner Organe des stomatognathen System",
+          "got": {
+            "code": "921",
+            "multiplier": null,
+            "raw": "(921)"
+          },
+          "animal": {
+            "name": "Luci",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": null,
+          "unitPriceNet": 34.6,
+          "lineTotalNet": 34.6,
+          "serviceDate": "2025-07-09",
+          "source": {
+            "ids": null,
+            "snippet": "Eingehende Untersuchung einzelner Organe des stomatognathen System (921) | 1,00 | 34,60 € | 34,60 € | 19,00"
+          }
+        }
+      ],
+      "totals": {
+        "net": 34.6,
+        "tax": {
+          "rate": 19.0,
+          "amount": 6.57
+        },
+        "gross": 41.17,
+        "discount": null
+      },
+      "warnings": [
+        "Dokument ist als RECHNUNG bezeichnet, enthält aber auch 'Betrag dankend erhalten' und EC-Cash-Zahlung; als invoice klassifiziert.",
+        "Leistungsbezeichnung enthält vermutlich einen OCR-/Grammatikfehler ('stomatognathen System'); Text wurde nah am Dokument übernommen.",
+        "Geburtsdatum des Tieres (06.01.2025) wurde nicht ins Schema übernommen, da kein passendes Feld vorhanden ist."
+      ]
+    },
+    {
+      "type": "receipt",
+      "currency": "EUR",
+      "number": "73980/25-024544BP",
+      "issuedAt": "2025-11-10",
+      "serviceDates": [
+        "2025-11-10"
+      ],
+      "sender": {
+        "practiceName": "AniCura Ludwigsburg Oßweil GmbH",
+        "address": "Karl-Heinrich-Käferle-Str. 2",
+        "postcode": "71640",
+        "city": "Ludwigsburg",
+        "country": null,
+        "contactPhone": "07141-299 90 30",
+        "contactMail": null,
+        "vatId": "DE349881089"
+      },
+      "clinicians": [
+        {
+          "name": "Dr. Marc A. Goldhammer",
+          "title": "Diplomate ECVS"
+        },
+        {
+          "name": "Dr. Claudia Bach",
+          "title": "Fachtierärztin für Klein- und Heimtiere"
+        }
+      ],
+      "payment": {
+        "iban": "DE53300400000122147200",
+        "bic": "COBADEFFXXX",
+        "bankName": "Commerzbank AG",
+        "dueDate": null
+      },
+      "recipient": {
+        "companyName": null,
+        "contactFirstname": "Cornelia",
+        "contactName": "Lauster",
+        "street": "Lammstr. 40",
+        "postcode": "70806",
+        "city": "Kornwestheim",
+        "country": null,
+        "contactPhone": null,
+        "contactMail": null
+      },
+      "animals": [
+        {
+          "name": "Coby",
+          "species": "Hund",
+          "breed": "Mischling"
+        }
+      ],
+      "diagnoses": [
+        "Wundheilungsstörung nach Zahnsanierung abgeheilt"
+      ],
+      "items": [
+        {
+          "name": "Folgeuntersuchung mit Beratung im selben Behandlungsfall, Hund",
+          "got": {
+            "code": "34",
+            "multiplier": null,
+            "raw": "GOT 34"
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": null,
+          "unitPriceNet": 41.86,
+          "lineTotalNet": 41.86,
+          "serviceDate": "2025-11-10",
+          "source": {
+            "ids": null,
+            "snippet": "1 Folgeuntersuchung mit Beratung im selben Behandlungsfall, Hund (GOT 34) 41,86"
+          }
+        },
+        {
+          "name": "Materialpauschale Behandlungsmaterial Sprechstunde",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": null,
+          "unitPriceNet": 7.4,
+          "lineTotalNet": 7.4,
+          "serviceDate": "2025-11-10",
+          "source": {
+            "ids": null,
+            "snippet": "1 Materialpauschale Behandlungsmaterial Sprechstunde 7,40"
+          }
+        },
+        {
+          "name": "Simparica 40 mg Kautabletten für Hunde von 10-20 kg",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 3.0,
+          "unit": null,
+          "unitPriceNet": null,
+          "lineTotalNet": 38.5,
+          "serviceDate": "2025-11-10",
+          "source": {
+            "ids": null,
+            "snippet": "3 Simparica 40 mg Kautabletten für Hunde von 10-20 kg 38,50"
+          }
+        }
+      ],
+      "totals": {
+        "net": 87.76,
+        "tax": {
+          "rate": 19.0,
+          "amount": 16.68
+        },
+        "gross": 104.44,
+        "discount": null
+      },
+      "warnings": [
+        "Die Beträge für Materialpauschale und Simparica wurden in den OCR-Quellen mit führendem 'A' erkannt; anhand des Bildes als 7,40 EUR bzw. 38,50 EUR interpretiert.",
+        "Für '3 Simparica 40 mg Kautabletten' ist nur der Gesamtpreis sichtbar; ein Netto-Einzelpreis pro Tablette ist nicht explizit angegeben und daher null.",
+        "Land für Absender und Empfänger ist auf dem Dokument nicht explizit genannt."
+      ]
+    },
+    {
+      "type": "receipt",
+      "currency": "EUR",
+      "number": "73980/25-022412BP",
+      "issuedAt": "2025-10-14",
+      "serviceDates": [
+        "2025-09-30",
+        "2025-10-02",
+        "2025-10-07",
+        "2025-10-08",
+        "2025-10-10",
+        "2025-10-14"
+      ],
+      "sender": {
+        "practiceName": "AniCura Ludwigsburg Oßweil GmbH",
+        "address": "Karl-Heinrich-Käferle-Str. 2",
+        "postcode": "71640",
+        "city": "Ludwigsburg",
+        "country": null,
+        "contactPhone": "07141-299 90 30",
+        "contactMail": null,
+        "vatId": "DE349881089"
+      },
+      "clinicians": [
+        {
+          "name": "Dr. Marc A. Goldhammer",
+          "title": "Diplomate ECVS"
+        },
+        {
+          "name": "Dr. Claudia Bach",
+          "title": "Fachtierärztin für Klein- und Heimtiere"
+        }
+      ],
+      "payment": {
+        "iban": "DE53300400000122147200",
+        "bic": "COBADEFFXXX",
+        "bankName": "Commerzbank AG",
+        "dueDate": null
+      },
+      "recipient": {
+        "companyName": null,
+        "contactFirstname": "Cornelia",
+        "contactName": "Lauster",
+        "street": "Lammstr. 40",
+        "postcode": "70806",
+        "city": "Kornwestheim",
+        "country": null,
+        "contactPhone": null,
+        "contactMail": null
+      },
+      "animals": [
+        {
+          "name": "Coby",
+          "species": "Hund",
+          "breed": "Mischling"
+        }
+      ],
+      "diagnoses": [
+        "Wunheilungsstörung post Zahnsanierung"
+      ],
+      "items": [
+        {
+          "name": "Folgeuntersuchung mit Beratung im selben Behandlungsfall, Hund",
+          "got": {
+            "code": "34",
+            "multiplier": null,
+            "raw": "GOT 34"
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": null,
+          "unitPriceNet": 41.86,
+          "lineTotalNet": 41.86,
+          "serviceDate": "2025-09-30",
+          "source": {
+            "ids": null,
+            "snippet": "1 Folgeuntersuchung mit Beratung im selben Behandlungsfall, Hund (GOT 34) 41,86"
+          }
+        },
+        {
+          "name": "Dermatologische Untersuchung der Haut/einer Wunde, Hund",
+          "got": {
+            "code": "394",
+            "multiplier": null,
+            "raw": "GOT 394"
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": null,
+          "unitPriceNet": 38.31,
+          "lineTotalNet": 38.31,
+          "serviceDate": "2025-09-30",
+          "source": {
+            "ids": null,
+            "snippet": "1 Dermatologische Untersuchung der Haut/einer Wunde, Hund (GOT 394) 38,31"
+          }
+        },
+        {
+          "name": "Materialpauschale Behandlungsmaterial Sprechstunde",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": null,
+          "unitPriceNet": 7.4,
+          "lineTotalNet": 7.4,
+          "serviceDate": "2025-09-30",
+          "source": {
+            "ids": null,
+            "snippet": "1 Materialpauschale Behandlungsmaterial Sprechstunde 7,40"
+          }
+        },
+        {
+          "name": "Wundspülung",
+          "got": {
+            "code": "417",
+            "multiplier": null,
+            "raw": "GOT 417"
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": null,
+          "unitPriceNet": 40.15,
+          "lineTotalNet": 40.15,
+          "serviceDate": "2025-09-30",
+          "source": {
+            "ids": null,
+            "snippet": "1 Wundspülung (GOT 417) 40,15"
+          }
+        },
+        {
+          "name": "NaCl 0,9% Spülflasche 100 ml",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 2.0,
+          "unit": "Flasche",
+          "unitPriceNet": 1.97,
+          "lineTotalNet": 3.94,
+          "serviceDate": "2025-09-30",
+          "source": {
+            "ids": null,
+            "snippet": "2 NaCl 0,9% Spülflasche 100 ml 3,94"
+          }
+        },
+        {
+          "name": "Kaltplasmabehandlung Argon",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": null,
+          "unitPriceNet": 50.0,
+          "lineTotalNet": 50.0,
+          "serviceDate": "2025-09-30",
+          "source": {
+            "ids": null,
+            "snippet": "1 Kaltplasmabehandlung Argon 50,00"
+          }
+        },
+        {
+          "name": "Einfaches Färbeverfahren und mikroskopische Untersuchung zur Zelldiagnostik",
+          "got": {
+            "code": "149",
+            "multiplier": null,
+            "raw": "GOT 149"
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": null,
+          "unitPriceNet": 28.65,
+          "lineTotalNet": 28.65,
+          "serviceDate": "2025-09-30",
+          "source": {
+            "ids": null,
+            "snippet": "1 Einfaches Färbeverfahren und mikroskopische Untersuchung zur Zelldiagnostik (GOT 149) 28,65"
+          }
+        },
+        {
+          "name": "Baytril flavour 150 mg für große Hunde",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 10.0,
+          "unit": null,
+          "unitPriceNet": 4.59,
+          "lineTotalNet": 45.88,
+          "serviceDate": "2025-09-30",
+          "source": {
+            "ids": null,
+            "snippet": "10 Baytril flavour 150 mg für große Hunde A45,88"
+          }
+        },
+        {
+          "name": "Folgeuntersuchung mit Beratung im selben Behandlungsfall, Hund",
+          "got": {
+            "code": "34",
+            "multiplier": null,
+            "raw": "GOT 34"
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": null,
+          "unitPriceNet": 41.86,
+          "lineTotalNet": 41.86,
+          "serviceDate": "2025-10-02",
+          "source": {
+            "ids": null,
+            "snippet": "1 Folgeuntersuchung mit Beratung im selben Behandlungsfall, Hund (GOT 34) 41,86"
+          }
+        },
+        {
+          "name": "Kaltplasmabehandlung Argon",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": null,
+          "unitPriceNet": 50.0,
+          "lineTotalNet": 50.0,
+          "serviceDate": "2025-10-02",
+          "source": {
+            "ids": null,
+            "snippet": "1 Kaltplasmabehandlung Argon 50,00"
+          }
+        },
+        {
+          "name": "Materialpauschale Behandlungsmaterial Sprechstunde",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": null,
+          "unitPriceNet": 7.4,
+          "lineTotalNet": 7.4,
+          "serviceDate": "2025-10-02",
+          "source": {
+            "ids": null,
+            "snippet": "1 Materialpauschale Behandlungsmaterial Sprechstunde 7,40"
+          }
+        },
+        {
+          "name": "Prontovet Wundspülung 350ml Flasche",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": "Flasche",
+          "unitPriceNet": 16.47,
+          "lineTotalNet": 16.47,
+          "serviceDate": "2025-10-02",
+          "source": {
+            "ids": null,
+            "snippet": "1 Prontovet Wundspülung 350ml Flasche A16,47"
+          }
+        },
+        {
+          "name": "Folgeuntersuchung mit Beratung im selben Behandlungsfall, Hund",
+          "got": {
+            "code": "34",
+            "multiplier": null,
+            "raw": "GOT 34"
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": null,
+          "unitPriceNet": 41.86,
+          "lineTotalNet": 41.86,
+          "serviceDate": "2025-10-07",
+          "source": {
+            "ids": null,
+            "snippet": "1 Folgeuntersuchung mit Beratung im selben Behandlungsfall, Hund (GOT 34) 41,86"
+          }
+        },
+        {
+          "name": "Kaltplasmabehandlung Argon",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": null,
+          "unitPriceNet": 50.0,
+          "lineTotalNet": 50.0,
+          "serviceDate": "2025-10-07",
+          "source": {
+            "ids": null,
+            "snippet": "1 Kaltplasmabehandlung Argon 50,00"
+          }
+        },
+        {
+          "name": "Materialpauschale Behandlungsmaterial Sprechstunde",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": null,
+          "unitPriceNet": 7.4,
+          "lineTotalNet": 7.4,
+          "serviceDate": "2025-10-07",
+          "source": {
+            "ids": null,
+            "snippet": "1 Materialpauschale Behandlungsmaterial Sprechstunde 7,40"
+          }
+        },
+        {
+          "name": "Baytril flavour 150 mg für große Hunde",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 10.0,
+          "unit": null,
+          "unitPriceNet": 4.59,
+          "lineTotalNet": 45.88,
+          "serviceDate": "2025-10-08",
+          "source": {
+            "ids": null,
+            "snippet": "10 Baytril flavour 150 mg für große Hunde A45,88"
+          }
+        },
+        {
+          "name": "Folgeuntersuchung mit Beratung im selben Behandlungsfall, Hund",
+          "got": {
+            "code": "34",
+            "multiplier": null,
+            "raw": "GOT 34"
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": null,
+          "unitPriceNet": 41.86,
+          "lineTotalNet": 41.86,
+          "serviceDate": "2025-10-10",
+          "source": {
+            "ids": null,
+            "snippet": "1 Folgeuntersuchung mit Beratung im selben Behandlungsfall, Hund (GOT 34) 41,86"
+          }
+        },
+        {
+          "name": "Kaltplasmabehandlung Argon",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": null,
+          "unitPriceNet": 50.0,
+          "lineTotalNet": 50.0,
+          "serviceDate": "2025-10-10",
+          "source": {
+            "ids": null,
+            "snippet": "1 Kaltplasmabehandlung Argon 50,00"
+          }
+        },
+        {
+          "name": "Materialpauschale Behandlungsmaterial Sprechstunde",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": null,
+          "unitPriceNet": 7.4,
+          "lineTotalNet": 7.4,
+          "serviceDate": "2025-10-10",
+          "source": {
+            "ids": null,
+            "snippet": "1 Materialpauschale Behandlungsmaterial Sprechstunde 7,40"
+          }
+        },
+        {
+          "name": "Folgeuntersuchung mit Beratung im selben Behandlungsfall, Hund",
+          "got": {
+            "code": "34",
+            "multiplier": null,
+            "raw": "GOT 34"
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": null,
+          "unitPriceNet": 41.86,
+          "lineTotalNet": 41.86,
+          "serviceDate": "2025-10-14",
+          "source": {
+            "ids": null,
+            "snippet": "1 Folgeuntersuchung mit Beratung im selben Behandlungsfall, Hund (GOT 34) 41,86"
+          }
+        },
+        {
+          "name": "Kaltplasmabehandlung Argon",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": null,
+          "unitPriceNet": 50.0,
+          "lineTotalNet": 50.0,
+          "serviceDate": "2025-10-14",
+          "source": {
+            "ids": null,
+            "snippet": "1 Kaltplasmabehandlung Argon 50,00"
+          }
+        },
+        {
+          "name": "Materialpauschale Behandlungsmaterial Sprechstunde",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": null,
+          "unitPriceNet": 7.4,
+          "lineTotalNet": 7.4,
+          "serviceDate": "2025-10-14",
+          "source": {
+            "ids": null,
+            "snippet": "1 Materialpauschale Behandlungsmaterial Sprechstunde 7,40"
+          }
+        }
+      ],
+      "totals": {
+        "net": 715.58,
+        "tax": {
+          "rate": 19.0,
+          "amount": 135.96
+        },
+        "gross": 851.54,
+        "discount": null
+      },
+      "warnings": [
+        "Die Beträge bei 'Baytril flavour 150 mg für große Hunde' und 'Prontovet Wundspülung 350ml Flasche' wurden aus OCR mit führendem 'A' als 45.88 bzw. 16.47 interpretiert.",
+        "Die letzten zwei Positionen für den 14.10.2025 (Kaltplasmabehandlung Argon 50,00 und Materialpauschale 7,40) stehen erst auf der Folgeseite nach der Zwischensumme; sie wurden als reguläre Leistungspositionen übernommen.",
+        "Für Positionen mit Mengenangabe wurde 'unit' nur gesetzt, wenn aus der Bezeichnung eindeutig ableitbar (z. B. Flasche).",
+        "Land für Sender und Empfänger ist auf dem Dokument nicht explizit genannt und daher null."
+      ]
+    },
+    {
+      "type": "prescription",
+      "currency": "EUR",
+      "number": null,
+      "issuedAt": "2025-10-10",
+      "serviceDates": [
+        "2025-10-10"
+      ],
+      "sender": {
+        "practiceName": "AniCura Ludwigsburg Oßweil GmbH",
+        "address": "Karl-Heinrich-Käferle-Straße 2",
+        "postcode": "71640",
+        "city": "Ludwigsburg",
+        "country": null,
+        "contactPhone": "07141-299 90 30",
+        "contactMail": null,
+        "vatId": null
+      },
+      "clinicians": [],
+      "payment": {
+        "iban": null,
+        "bic": null,
+        "bankName": null,
+        "dueDate": null
+      },
+      "recipient": {
+        "companyName": null,
+        "contactFirstname": null,
+        "contactName": "Lauster",
+        "street": "Lammstr. 40",
+        "postcode": "70806",
+        "city": "Kornwestheim",
+        "country": null,
+        "contactPhone": null,
+        "contactMail": null
+      },
+      "animals": [
+        {
+          "name": "Coby",
+          "species": "Hund",
+          "breed": null
+        }
+      ],
+      "diagnoses": [],
+      "items": [
+        {
+          "name": "Flammazine Salbe",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Coby",
+            "species": "Hund"
+          },
+          "qty": 50.0,
+          "unit": "g",
+          "unitPriceNet": null,
+          "lineTotalNet": 17.0,
+          "serviceDate": "2025-10-10",
+          "source": {
+            "ids": null,
+            "snippet": "Flammazine Salbe 50 g ... für Hund \"Coby\" ... EUR 17,"
+          }
+        }
+      ],
+      "totals": {
+        "net": null,
+        "tax": {
+          "rate": null,
+          "amount": null
+        },
+        "gross": 17.0,
+        "discount": null
+      },
+      "warnings": [
+        "Dokument wirkt primär wie ein Rezept/Verordnung mit Apothekenstempel, nicht wie eine klassische Tierarztrechnung.",
+        "Ausstellungsjahr ist im handschriftlichen Datum nicht vollständig lesbar; 2025 wurde aus dem Apothekenstempel '18/Okt. 2025' und '10.10.2025' abgeleitet.",
+        "Empfängername ist unsicher: OCR liest 'Fam. Lauster', handschriftlich könnte der Nachname leicht abweichen.",
+        "Preis 17,00 EUR stammt aus dem Apothekenaufdruck; unklar, ob dies Einzelpreis oder Gesamtbetrag ist, daher nur gross sicher gesetzt.",
+        "Hinweistext 'zur localen ...' ist nicht eindeutig lesbar und wurde nicht als Diagnose oder Leistung übernommen."
+      ]
+    }
+  ]
+}

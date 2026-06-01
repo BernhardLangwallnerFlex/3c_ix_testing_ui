@@ -1,0 +1,154 @@
+{
+  "number_of_subdocuments": 1,
+  "subdocuments": [
+    {
+      "type": "receipt",
+      "currency": "EUR",
+      "number": "20847",
+      "issuedAt": "2024-01-15",
+      "serviceDates": [
+        "2024-01-15"
+      ],
+      "sender": {
+        "practiceName": "Tierärztliche Praxis Dr. med. vet. Sabine Herrmann",
+        "address": "Mainzer Straße 42",
+        "postcode": "55131",
+        "city": "Mainz",
+        "country": null,
+        "contactPhone": "06131 / 584923",
+        "contactMail": null,
+        "vatId": "DE248107365"
+      },
+      "clinicians": [
+        {
+          "name": "Sabine Herrmann",
+          "title": "Dr. med. vet."
+        }
+      ],
+      "payment": {
+        "iban": null,
+        "bic": null,
+        "bankName": null,
+        "dueDate": null
+      },
+      "recipient": {
+        "companyName": null,
+        "contactFirstname": "Max",
+        "contactName": "Mustermann",
+        "street": "Beispielweg 7",
+        "postcode": "55130",
+        "city": "Mainz",
+        "country": null,
+        "contactPhone": null,
+        "contactMail": null
+      },
+      "animals": [
+        {
+          "name": "Paulette",
+          "species": "Hund",
+          "breed": "Franz.Bulldogge"
+        }
+      ],
+      "diagnoses": [],
+      "items": [
+        {
+          "name": "Allgemeine Untersuchung mit Beratung",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Paulette",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": null,
+          "unitPriceNet": 23.62,
+          "lineTotalNet": 23.62,
+          "serviceDate": "2024-01-15",
+          "source": {
+            "ids": null,
+            "snippet": "1 Allgemeine Untersuchung mit Beratung 23,62"
+          }
+        },
+        {
+          "name": "Impfung (Grundimmunisierung)",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Paulette",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": null,
+          "unitPriceNet": 40.18,
+          "lineTotalNet": 40.18,
+          "serviceDate": "2024-01-15",
+          "source": {
+            "ids": null,
+            "snippet": "1 Impfung (Grundimmunisierung) 40,18"
+          }
+        },
+        {
+          "name": "Ohrenreinigung",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Paulette",
+            "species": "Hund"
+          },
+          "qty": 1.0,
+          "unit": null,
+          "unitPriceNet": 12.84,
+          "lineTotalNet": 12.84,
+          "serviceDate": "2024-01-15",
+          "source": {
+            "ids": null,
+            "snippet": "1 Ohrenreinigung 12,84"
+          }
+        },
+        {
+          "name": "Surolan Ohrentropfen",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Paulette",
+            "species": "Hund"
+          },
+          "qty": 0.5,
+          "unit": "Pk",
+          "unitPriceNet": 64.9,
+          "lineTotalNet": 32.45,
+          "serviceDate": "2024-01-15",
+          "source": {
+            "ids": null,
+            "snippet": "0,50 Pk Surolan Ohrentropfen 32,45"
+          }
+        }
+      ],
+      "totals": {
+        "net": 109.09,
+        "tax": {
+          "rate": 19.0,
+          "amount": 20.73
+        },
+        "gross": 129.82,
+        "discount": null
+      },
+      "warnings": [
+        "Die Zeile 'inkl. klinische Untersuchung' wurde nicht als eigenes Item erfasst, da kein separater Preis angegeben ist und sie als Zusatz zur Impfung erscheint.",
+        "Der Gesamt-Netto- und Steuerbetrag wurden aus den beiden ausgewiesenen Teilbeträgen für Leistungen und Medikamente summiert."
+      ]
+    }
+  ]
+}

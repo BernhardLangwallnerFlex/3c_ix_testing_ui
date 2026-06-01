@@ -255,6 +255,7 @@ def load(product, name):
     ("bps", "BPS_4"),
     ("sanierer", "LO_Rechnung"),
     ("sanierer", "Verkaufsrechnung_42613847"),
+    ("vetcostcheck", "testrechnung_01_bulldogge"),
 ])
 def test_fixture_clean_docs_pass(product, name):
     rep = evaluate(load(product, name))
@@ -269,3 +270,18 @@ def test_fixture_ar26076770_lineitems_warn_others_pass():
     assert c["tax"].verdict == "pass"
     assert c["gross"].verdict == "pass"
     assert rep.verdict == "warn"
+
+
+def test_fixture_vcc_katze_lineitems_capped_to_warn():
+    rep = evaluate(load("vetcostcheck", "testrechnung_03_katze"))
+    assert checks_by_id(rep.subdocs[0])["lineItems"].verdict == "warn"
+    assert rep.verdict == "warn"
+
+
+def test_fixture_vcc_multidoc_rollup_ignores_skipped_prescription():
+    # 4 subdocs: 3 invoices pass, 1 prescription (net=null) fully skipped.
+    rep = evaluate(load("vetcostcheck", "VCC_Viele_Dokumente"))
+    assert rep.subdoc_count == 4
+    assert [sd.verdict for sd in rep.subdocs[:3]] == ["pass", "pass", "pass"]
+    assert rep.subdocs[3].verdict == "skipped"   # prescription, no numbers
+    assert rep.verdict == "pass"                 # skipped doesn't drag the rollup down

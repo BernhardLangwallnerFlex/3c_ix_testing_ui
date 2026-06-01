@@ -1,0 +1,182 @@
+{
+  "number_of_subdocuments": 1,
+  "subdocuments": [
+    {
+      "type": "receipt",
+      "currency": "EUR",
+      "number": "10587",
+      "issuedAt": "2024-02-22",
+      "serviceDates": [
+        "2024-02-22"
+      ],
+      "sender": {
+        "practiceName": "Tierarztpraxis Dr. Neumann",
+        "address": "Nymphenburger Str. 54",
+        "postcode": "80639",
+        "city": "München",
+        "country": null,
+        "contactPhone": null,
+        "contactMail": null,
+        "vatId": null
+      },
+      "clinicians": [
+        {
+          "name": "K. Neumann",
+          "title": "Dr."
+        },
+        {
+          "name": "M. Neumann",
+          "title": "Dr."
+        }
+      ],
+      "payment": {
+        "iban": null,
+        "bic": null,
+        "bankName": null,
+        "dueDate": null
+      },
+      "recipient": {
+        "companyName": null,
+        "contactFirstname": "Martina",
+        "contactName": "Mustermann",
+        "street": "Musterstraße 12",
+        "postcode": "80634",
+        "city": "München",
+        "country": null,
+        "contactPhone": null,
+        "contactMail": null
+      },
+      "animals": [
+        {
+          "name": "Minka",
+          "species": "Katze",
+          "breed": null
+        }
+      ],
+      "diagnoses": [
+        "Erbrechen und Appetitlosigkeit"
+      ],
+      "items": [
+        {
+          "name": "Allgemeine Untersuchung mit Beratung - 16",
+          "got": {
+            "code": "16",
+            "multiplier": null,
+            "raw": "16"
+          },
+          "animal": {
+            "name": "Minka",
+            "species": "Katze"
+          },
+          "qty": null,
+          "unit": null,
+          "unitPriceNet": 23.62,
+          "lineTotalNet": 23.62,
+          "serviceDate": "2024-02-22",
+          "source": {
+            "ids": null,
+            "snippet": "Allgemeine Untersuchung mit Beratung - 16 | 23,62"
+          }
+        },
+        {
+          "name": "Blutentnahme, venös",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Minka",
+            "species": "Katze"
+          },
+          "qty": null,
+          "unit": null,
+          "unitPriceNet": 11.26,
+          "lineTotalNet": 11.26,
+          "serviceDate": "2024-02-22",
+          "source": {
+            "ids": null,
+            "snippet": "Blutentnahme, venös | 11,26"
+          }
+        },
+        {
+          "name": "Laboruntersuchung Blutbild klein",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Minka",
+            "species": "Katze"
+          },
+          "qty": null,
+          "unit": null,
+          "unitPriceNet": 28.19,
+          "lineTotalNet": 28.19,
+          "serviceDate": "2024-02-22",
+          "source": {
+            "ids": null,
+            "snippet": "Laboruntersuchung Blutbild klein | 28,19"
+          }
+        },
+        {
+          "name": "Infusion subkutan (250ml)",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Minka",
+            "species": "Katze"
+          },
+          "qty": 250.0,
+          "unit": "ml",
+          "unitPriceNet": 18.03,
+          "lineTotalNet": 18.03,
+          "serviceDate": "2024-02-22",
+          "source": {
+            "ids": null,
+            "snippet": "Infusion subkutan (250ml) | 18,03"
+          }
+        },
+        {
+          "name": "Injektionsbehandlung (Cerenia)",
+          "got": {
+            "code": null,
+            "multiplier": null,
+            "raw": null
+          },
+          "animal": {
+            "name": "Minka",
+            "species": "Katze"
+          },
+          "qty": null,
+          "unit": null,
+          "unitPriceNet": 15.4,
+          "lineTotalNet": 15.4,
+          "serviceDate": "2024-02-22",
+          "source": {
+            "ids": null,
+            "snippet": "Injektionsbehandlung (Cerenia) | 15,40"
+          }
+        }
+      ],
+      "totals": {
+        "net": 96.5,
+        "tax": {
+          "rate": 19.0,
+          "amount": 18.34
+        },
+        "gross": 114.84,
+        "discount": null
+      },
+      "warnings": [
+        "Dokument ist als 'Quittung' bezeichnet; als type 'receipt' klassifiziert.",
+        "GOT-Code nur bei 'Allgemeine Untersuchung mit Beratung - 16' eindeutig erkennbar; unklar, ob '16' Teil der Leistungsbezeichnung oder GOT-Ziffer ist.",
+        "Land für Absender und Empfänger nicht explizit angegeben."
+      ]
+    }
+  ]
+}
