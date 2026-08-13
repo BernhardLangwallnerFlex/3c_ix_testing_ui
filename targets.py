@@ -63,3 +63,12 @@ def resolve_target(
         api_key = api_key or environ.get(legacy_key, "")
 
     return {"base_url": base_url, "api_key": api_key}
+
+
+def filter_runs(runs: List[dict], product: str, env: str) -> List[dict]:
+    """Runs belonging to this target, in their existing order.
+
+    A run must match on both fields: a prod run and a test run of the same file
+    are otherwise indistinguishable in the Inspector.
+    """
+    return [r for r in runs if r.get("product") == product and r.get("env") == env]

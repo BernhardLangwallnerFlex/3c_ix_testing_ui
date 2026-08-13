@@ -6,6 +6,7 @@ from targets import (
     DEFAULT_PRODUCT,
     ENVIRONMENTS,
     PRODUCTS,
+    filter_runs,
     resolve_target,
     target_env_vars,
 )
@@ -120,3 +121,40 @@ def test_resolve_target_reads_os_environ_by_default(monkeypatch):
     monkeypatch.setenv("BPS_TEST_API_URL", "https://from-os-environ")
     monkeypatch.setenv("BPS_TEST_API_KEY", "k")
     assert resolve_target("BPS", "Test")["base_url"] == "https://from-os-environ"
+
+
+# --------------------------------------------------------------------------
+# run scoping
+# --------------------------------------------------------------------------
+def make_run(run_id, product, env=None):
+    run = {"run_id": run_id, "product": product, "files": []}
+    if env is not None:
+        run["env"] = env
+    return run
+
+
+def test_filter_runs_matches_both_product_and_environment():
+    runs = [
+        make_run("a", "BPS", "Test"),
+        make_run("b", "BPS", "Prod"),
+        make_run("c", "VetCostCheck", "Test"),
+    ]
+    assert [r["run_id"] for r in filter_runs(runs, "BPS", "Test")] == ["a"]
+
+
+def test_filter_runs_preserves_order():
+    runs = [
+        make_run("a", "BPS", "Test"),
+        make_run("b", "BPS", "Prod"),
+        make_run("c", "BPS", "Test"),
+    ]
+    assert [r["run_id"] for r in filter_runs(runs, "BPS", "Test")] == ["a", "c"]
+
+
+def test_filter_runs_excludes_runs_with_no_environment():
+    runs = [make_run("a", "BPS")]
+    assert filter_runs(runs, "BPS", "Test") == []
+
+
+def test_filter_runs_on_empty_list():
+    assert filter_runs([], "BPS", "Test") == []
