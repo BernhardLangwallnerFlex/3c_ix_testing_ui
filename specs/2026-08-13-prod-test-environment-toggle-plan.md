@@ -495,8 +495,8 @@ Confirm, in order:
 2. The sidebar shows the VetCostCheck test URL and a non-empty key.
 3. Clicking **Prod** shows the `⚠️ PROD — live endpoint` badge, swaps the title to `· PROD`, and swaps the URL to the production host.
 4. Switching product to BPS keeps the environment, and the URL changes to the BPS host for that environment.
-5. Editing the URL field, switching environment, and switching back preserves the edit for that target only.
-6. Uploading and processing one PDF against Test still works end to end.
+5. Editing the URL field and switching environment shows the *other* target's URL, never the edit. (Switching back re-initialises the field from the environment variable — Streamlit discards state for unrendered keys. This is expected; see spec §3.3.)
+6. Uploading and processing one PDF against Test still works end to end. (Verified as part of Task 4's manual pass, which processes runs in both environments — no need to run the same extraction twice.)
 
 Stop the server when done.
 

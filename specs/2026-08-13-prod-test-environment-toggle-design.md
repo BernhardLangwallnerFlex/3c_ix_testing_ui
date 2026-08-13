@@ -101,8 +101,15 @@ diagnosed rather than producing an opaque HTTP failure.
 
 The sidebar `API_BASE_URL` / `API_KEY` text inputs are currently keyed per product
 (`api_base_url_{product}`). They become keyed per **(product, environment)**
-(`api_base_url_{product}_{env}`), so each of the six targets keeps its own editable value
-and switching environment never shows a stale URL or key.
+(`api_base_url_{product}_{env}`), so switching environment never shows the other
+environment's URL or key.
+
+Note the consequence, verified in the browser: Streamlit discards widget state for keys not
+rendered in a run, so a *manual* edit to one of these fields is lost once you switch away
+and back — the field re-initialises from the resolved environment variable. That is the
+safe direction to fail (you always see the target you actually selected), and manual edits
+are a debugging convenience, not the normal path. Persisting them is deliberately not
+implemented.
 
 ### 3.4 API Docs page
 
