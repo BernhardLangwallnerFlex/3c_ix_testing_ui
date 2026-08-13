@@ -44,13 +44,18 @@ The app reads its targets from Container App env vars, with keys stored as secre
 test targets must be added once, before `Test` works in the deployed UI (until then the
 sidebar reports them as unconfigured):
 
+Run these from the repo root. The first line sources `.env` so the real key values are
+never typed into a shell or pasted into a terminal history:
+
 ```bash
+set -a; . ./.env; set +a
+
 az containerapp secret set \
   --name ca-vetcostcheck-ui --resource-group rg-3c-invoice \
   --secrets \
-    vetcostcheck-test-api-key="<VETCOSTCHECK_TEST_API_KEY>" \
-    bps-test-api-key="<BPS_TEST_API_KEY>" \
-    sanierer-test-api-key="<SANIERER_TEST_API_KEY>"
+    vetcostcheck-test-api-key="$VETCOSTCHECK_TEST_API_KEY" \
+    bps-test-api-key="$BPS_TEST_API_KEY" \
+    sanierer-test-api-key="$SANIERER_TEST_API_KEY"
 
 az containerapp update \
   --name ca-vetcostcheck-ui --resource-group rg-3c-invoice \
