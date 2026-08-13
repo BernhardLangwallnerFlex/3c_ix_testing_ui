@@ -14,10 +14,19 @@ streamlit run app.py
 ```
 
 Configuration is via environment variables (see `.env` for the full list):
-- `API_BASE_URL` — backend API endpoint
-- `API_KEY` — API key sent as `X-Api-Key` header
 - `UI_USERNAME` / `UI_PASSWORD` — basic login credentials
 - `POLL_INTERVAL_SECONDS`, `JOB_TIMEOUT_SECONDS` — polling behavior
+- Per-target API endpoints, one pair per (product, environment):
+
+  | Product | Prod | Test |
+  |---|---|---|
+  | VetCostCheck | `VETCOSTCHECK_API_URL` / `VETCOSTCHECK_API_KEY` | `VETCOSTCHECK_TEST_API_URL` / `VETCOSTCHECK_TEST_API_KEY` |
+  | BPS | `BPS_API_URL` / `BPS_API_KEY` | `BPS_TEST_API_URL` / `BPS_TEST_API_KEY` |
+  | Sanierer | `SANIERER_API_URL` / `SANIERER_API_KEY` | `SANIERER_TEST_API_URL` / `SANIERER_TEST_API_KEY` |
+
+  VetCostCheck **prod** falls back to the legacy `API_BASE_URL` / `API_KEY` if its own
+  pair is unset. Test targets have no fallback: an unset test variable is reported in
+  the sidebar rather than silently resolving to the prod endpoint.
 
 ## Docker / Deployment
 
@@ -29,12 +38,46 @@ az acr build --registry cr3cinvoice --image vetcostcheck-ui:v1 .
 
 Redeploy with `./deploy.sh`. When deployed in Azure, the UI communicates with the API via the internal URL `http://ca-invoice-api:8000` (no IP restrictions, no TLS needed).
 
+### Container App environment variables
+
+The app reads its targets from Container App env vars, with keys stored as secrets. The
+test targets must be added once, before `Test` works in the deployed UI (until then the
+sidebar reports them as unconfigured):
+
+```bash
+az containerapp secret set \
+  --name ca-vetcostcheck-ui --resource-group rg-3c-invoice \
+  --secrets \
+    vetcostcheck-test-api-key="<VETCOSTCHECK_TEST_API_KEY>" \
+    bps-test-api-key="<BPS_TEST_API_KEY>" \
+    sanierer-test-api-key="<SANIERER_TEST_API_KEY>"
+
+az containerapp update \
+  --name ca-vetcostcheck-ui --resource-group rg-3c-invoice \
+  --set-env-vars \
+    VETCOSTCHECK_TEST_API_URL="https://3cvetcostcheck-test.flex-capital-scale.com" \
+    BPS_TEST_API_URL="https://3cbps-test.flex-capital-scale.com" \
+    SANIERER_TEST_API_URL="https://3csanierer-test.flex-capital-scale.com" \
+    VETCOSTCHECK_TEST_API_KEY=secretref:vetcostcheck-test-api-key \
+    BPS_TEST_API_KEY=secretref:bps-test-api-key \
+    SANIERER_TEST_API_KEY=secretref:sanierer-test-api-key
+```
+
+Key values are in the local `.env` (gitignored). VetCostCheck prod needs no new variable —
+it still resolves through the legacy `API_BASE_URL` / `API_KEY` pair already set there.
+
 ## Architecture
 
 Single-file Streamlit app (`app.py`) with two pages selectable via sidebar radio:
 
 1. **Invoice Processing** — upload files, poll for results, inspect extractions
 2. **API Docs** — embedded Swagger UI fetched from the backend's `/openapi.json`
+
+Two sidebar controls select the API target: **Product** (VetCostCheck / BPS / Sanierer) and
+**Environment** (Test / Prod, defaulting to Test). Together they resolve to a base URL and
+API key via `targets.resolve_target`. Runs are tagged with both, and the Inspector only
+shows runs matching the active target — a prod run and a test run of the same file never
+share a list. Prod is marked with a sidebar warning badge and in the page title.
 
 Key flow for invoice processing:
 1. **Login** — session-based password gate (`require_login`)

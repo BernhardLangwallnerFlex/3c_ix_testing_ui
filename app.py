@@ -15,44 +15,31 @@ from PIL import Image
 import io
 
 import sanity
+from targets import (
+    DEFAULT_ENVIRONMENT,
+    DEFAULT_PRODUCT,
+    ENVIRONMENTS,
+    PRODUCTS,
+    filter_runs,
+    resolve_target,
+    target_env_vars,
+)
 
 # ---------------------------
 # Config
 # ---------------------------
 
-DEFAULT_API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:8000")
-DEFAULT_API_KEY = os.getenv("API_KEY", "changeme123")
 DEFAULT_UI_USERNAME = os.getenv("UI_USERNAME", "admin")
 DEFAULT_UI_PASSWORD = os.getenv("UI_PASSWORD", "")
 DEFAULT_POLL_INTERVAL = float(os.getenv("POLL_INTERVAL_SECONDS", "1.0"))
 DEFAULT_JOB_TIMEOUT = int(os.getenv("JOB_TIMEOUT_SECONDS", "600"))  # 10 minutes
 
 
-# ---------------------------
-# Products
-# ---------------------------
-# Each product is just an API profile (base URL + key). Functionality is
-# identical across products; only the extraction JSON structure differs.
-# VetCostCheck falls back to the legacy API_BASE_URL / API_KEY env vars for
-# backwards compatibility.
-PRODUCTS: Dict[str, Dict[str, str]] = {
-    "VetCostCheck": {
-        "base_url": os.getenv("VETCOSTCHECK_API_URL", DEFAULT_API_BASE_URL),
-        "api_key": os.getenv("VETCOSTCHECK_API_KEY", DEFAULT_API_KEY),
-    },
-    "BPS": {
-        "base_url": os.getenv("BPS_API_URL", "https://3cbps.flex-capital-scale.com"),
-        "api_key": os.getenv("BPS_API_KEY", ""),
-    },
-    "Sanierer": {
-        "base_url": os.getenv("SANIERER_API_URL", "https://3csanierer.flex-capital-scale.com"),
-        "api_key": os.getenv("SANIERER_API_KEY", ""),
-    },
-}
-DEFAULT_PRODUCT = "VetCostCheck"
+# Products and environments live in targets.py. A target is a (product,
+# environment) pair; functionality is identical across all six, only the
+# extraction JSON structure differs per product.
 
-
-APP_VERSION = "ui-v4-multi-product"
+APP_VERSION = "ui-v5-prod-test-toggle"
 
 AUTH_COOKIE_NAME = "ix_auth_token"
 
@@ -172,12 +159,13 @@ class FileJob:
     elapsed_sec: Optional[float] = None
 
 
-def add_run(files: List[FileJob], product: str) -> str:
+def add_run(files: List[FileJob], product: str, env: str) -> str:
     run_id = f"run_{uuid.uuid4().hex[:10]}"
     st.session_state["runs"].insert(0, {
         "run_id": run_id,
         "created_at": now_ts(),
         "product": product,
+        "env": env,
         "files": files,
     })
     st.session_state["selected_run_id"] = run_id
@@ -232,17 +220,25 @@ def api_job_status(api_base_url: str, api_key: str, job_id: str) -> dict:
 # ---------------------------
 # UI
 # ---------------------------
-def sidebar_config(product: str):
-    cfg = PRODUCTS[product]
+def sidebar_config(product: str, env: str):
+    target = resolve_target(product, env)
     st.sidebar.header("⚙️ API Configuration")
-    # Key the fields per product so each product keeps its own (editable)
-    # URL/key and switching products shows the right values.
+    # Key the fields per (product, environment) so each of the six targets keeps
+    # its own editable URL/key and switching never shows a stale value.
     api_base_url = st.sidebar.text_input(
-        "API_BASE_URL", value=cfg["base_url"], key=f"api_base_url_{product}"
+        "API_BASE_URL", value=target["base_url"], key=f"api_base_url_{product}_{env}"
     )
     api_key = st.sidebar.text_input(
-        "API_KEY (X-Api-Key)", value=cfg["api_key"], type="password", key=f"api_key_{product}"
+        "API_KEY (X-Api-Key)", value=target["api_key"], type="password",
+        key=f"api_key_{product}_{env}",
     )
+
+    # Report an unconfigured target by name rather than letting it fail as an
+    # opaque HTTP error. Checks the effective values, so pasting one clears it.
+    url_var, key_var = target_env_vars(product, env)
+    missing = [v for v, val in ((url_var, api_base_url), (key_var, api_key)) if not val]
+    if missing:
+        st.sidebar.error(f"{product} · {env} is not configured — set {' and '.join(missing)}")
 
     st.sidebar.header("⏱ Polling")
     poll_interval = st.sidebar.number_input("Poll interval (seconds)", min_value=0.2, max_value=10.0, value=DEFAULT_POLL_INTERVAL, step=0.2)
@@ -263,7 +259,7 @@ def sidebar_config(product: str):
     return api_base_url, api_key, float(poll_interval), int(job_timeout)
 
 
-def upload_and_process_run(api_base_url: str, api_key: str, poll_interval: float, job_timeout: int, product: str):
+def upload_and_process_run(api_base_url: str, api_key: str, poll_interval: float, job_timeout: int, product: str, env: str):
     st.subheader("📤 Upload & Process")
 
     uploaded = st.file_uploader(
@@ -301,7 +297,7 @@ def upload_and_process_run(api_base_url: str, api_key: str, poll_interval: float
             updated_at=now_ts(),
         ))
 
-    run_id = add_run(file_jobs, product)
+    run_id = add_run(file_jobs, product, env)
 
     # UI placeholders
     st.success(f"Created run: {run_id}")
@@ -512,13 +508,13 @@ def render_sanity_report(report, result: dict) -> None:
                     st.caption(f"• {w}")
 
 
-def inspector_panel(product: str):
+def inspector_panel(product: str, env: str):
     st.subheader("🔎 Inspector")
 
-    # Only show runs belonging to the active product.
-    product_runs = [r for r in st.session_state["runs"] if r.get("product") == product]
+    # Only show runs belonging to the active product AND environment.
+    product_runs = filter_runs(st.session_state["runs"], product, env)
     if not product_runs:
-        st.info(f"No {product} runs yet. Upload and process files above.")
+        st.info(f"No {product} runs in {env} yet. Upload and process files above.")
         return
 
     run_options = [r["run_id"] for r in product_runs]
@@ -623,8 +619,9 @@ def inspector_panel(product: str):
                 st.warning(f.error)
 
 
-def docs_page(api_base_url: str):
+def docs_page(api_base_url: str, product: str, env: str):
     st.title("API Documentation")
+    st.caption(f"{product} · {env} — {api_base_url}")
 
     # Fetch the OpenAPI spec from the internal API
     try:
@@ -700,29 +697,37 @@ def main():
     with _c2:
         st.image("logo_blau.jpg", width=120)
 
-    # Global product selector (single-select). Sits above navigation so it
-    # applies to both the Invoice Processing and API Docs pages.
+    # Global target selectors (single-select). They sit above navigation so they
+    # apply to both the Invoice Processing and API Docs pages.
     product = st.sidebar.segmented_control(
-        "Product", options=list(PRODUCTS), default=DEFAULT_PRODUCT
+        "Product", options=PRODUCTS, default=DEFAULT_PRODUCT
     )
     if product is None:  # single-select can be cleared by clicking the active chip
         product = DEFAULT_PRODUCT
+
+    env = st.sidebar.segmented_control(
+        "Environment", options=list(ENVIRONMENTS), default=DEFAULT_ENVIRONMENT
+    )
+    if env is None:  # single-select can be cleared by clicking the active chip
+        env = DEFAULT_ENVIRONMENT
+    if env == "Prod":
+        st.sidebar.warning("⚠️ PROD — live endpoint")
     st.sidebar.divider()
 
     # Navigation
     page = st.sidebar.radio("Navigation", ["Invoice Processing", "API Docs"], index=0)
 
     # Sidebar config (always rendered so widgets persist across pages)
-    api_base_url, api_key, poll_interval, job_timeout = sidebar_config(product)
+    api_base_url, api_key, poll_interval, job_timeout = sidebar_config(product, env)
 
     if page == "Invoice Processing":
-        st.title(f"Invoice Extraction – Test Console · {product}")
+        st.title(f"Invoice Extraction – Test Console · {product} · {env.upper()}")
         st.caption("Uploads are cached in this Streamlit session. Refreshing the page will lose cached PDFs.")
-        upload_and_process_run(api_base_url, api_key, poll_interval, job_timeout, product)
+        upload_and_process_run(api_base_url, api_key, poll_interval, job_timeout, product, env)
         st.divider()
-        inspector_panel(product)
+        inspector_panel(product, env)
     else:
-        docs_page(api_base_url)
+        docs_page(api_base_url, product, env)
 
 
 if __name__ == "__main__":

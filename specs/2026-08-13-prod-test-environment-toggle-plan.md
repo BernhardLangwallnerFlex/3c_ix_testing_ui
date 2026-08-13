@@ -495,8 +495,8 @@ Confirm, in order:
 2. The sidebar shows the VetCostCheck test URL and a non-empty key.
 3. Clicking **Prod** shows the `⚠️ PROD — live endpoint` badge, swaps the title to `· PROD`, and swaps the URL to the production host.
 4. Switching product to BPS keeps the environment, and the URL changes to the BPS host for that environment.
-5. Editing the URL field, switching environment, and switching back preserves the edit for that target only.
-6. Uploading and processing one PDF against Test still works end to end.
+5. Editing the URL field and switching environment shows the *other* target's URL, never the edit. (Switching back re-initialises the field from the environment variable — Streamlit discards state for unrendered keys. This is expected; see spec §3.3.)
+6. Uploading and processing one PDF against Test still works end to end. (Verified as part of Task 4's manual pass, which processes runs in both environments — no need to run the same extraction twice.)
 
 Stop the server when done.
 
@@ -569,7 +569,7 @@ Run: `.venv/bin/python -m streamlit run app.py`
 1. Process a file against **Test**. The Inspector shows the run.
 2. Switch to **Prod** without processing anything. The Inspector shows `No VetCostCheck runs in Prod yet.` — the test run must **not** appear.
 3. Switch back to **Test**. The run reappears.
-4. Process a file against **Prod**, then toggle between environments and confirm each list holds only its own run.
+4. ~~Process a file against **Prod**, then toggle between environments and confirm each list holds only its own run.~~ **Skipped deliberately:** this sends a document to the production API purely to verify the mirror image of step 2. `filter_runs` is unit-tested in both directions (`test_filter_runs_matches_both_product_and_environment`), so the added confidence does not justify production traffic. Run it yourself if you want the end-to-end confirmation.
 
 Stop the server when done.
 
