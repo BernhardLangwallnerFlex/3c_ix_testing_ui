@@ -159,12 +159,13 @@ class FileJob:
     elapsed_sec: Optional[float] = None
 
 
-def add_run(files: List[FileJob], product: str) -> str:
+def add_run(files: List[FileJob], product: str, env: str) -> str:
     run_id = f"run_{uuid.uuid4().hex[:10]}"
     st.session_state["runs"].insert(0, {
         "run_id": run_id,
         "created_at": now_ts(),
         "product": product,
+        "env": env,
         "files": files,
     })
     st.session_state["selected_run_id"] = run_id
@@ -296,7 +297,7 @@ def upload_and_process_run(api_base_url: str, api_key: str, poll_interval: float
             updated_at=now_ts(),
         ))
 
-    run_id = add_run(file_jobs, product)
+    run_id = add_run(file_jobs, product, env)
 
     # UI placeholders
     st.success(f"Created run: {run_id}")
@@ -510,10 +511,10 @@ def render_sanity_report(report, result: dict) -> None:
 def inspector_panel(product: str, env: str):
     st.subheader("🔎 Inspector")
 
-    # Only show runs belonging to the active product.
-    product_runs = [r for r in st.session_state["runs"] if r.get("product") == product]
+    # Only show runs belonging to the active product AND environment.
+    product_runs = filter_runs(st.session_state["runs"], product, env)
     if not product_runs:
-        st.info(f"No {product} runs yet. Upload and process files above.")
+        st.info(f"No {product} runs in {env} yet. Upload and process files above.")
         return
 
     run_options = [r["run_id"] for r in product_runs]

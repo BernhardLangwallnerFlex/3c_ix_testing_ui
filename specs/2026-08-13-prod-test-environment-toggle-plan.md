@@ -569,7 +569,7 @@ Run: `.venv/bin/python -m streamlit run app.py`
 1. Process a file against **Test**. The Inspector shows the run.
 2. Switch to **Prod** without processing anything. The Inspector shows `No VetCostCheck runs in Prod yet.` — the test run must **not** appear.
 3. Switch back to **Test**. The run reappears.
-4. Process a file against **Prod**, then toggle between environments and confirm each list holds only its own run.
+4. ~~Process a file against **Prod**, then toggle between environments and confirm each list holds only its own run.~~ **Skipped deliberately:** this sends a document to the production API purely to verify the mirror image of step 2. `filter_runs` is unit-tested in both directions (`test_filter_runs_matches_both_product_and_environment`), so the added confidence does not justify production traffic. Run it yourself if you want the end-to-end confirmation.
 
 Stop the server when done.
 
