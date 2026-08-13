@@ -621,6 +621,7 @@ def inspector_panel(product: str, env: str):
 
 def docs_page(api_base_url: str, product: str, env: str):
     st.title("API Documentation")
+    st.caption(f"{product} · {env} — {api_base_url}")
 
     # Fetch the OpenAPI spec from the internal API
     try:
